@@ -14,7 +14,7 @@ const Interview = () => {
   const fetchQuestion = () => {
     if (!session) return;
     setQuestion('Generating next question...');
-    axios.get(`http://localhost:8000/api/sessions/${session.id}/question`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/sessions/${session.id}/question`)
       .then(res => setQuestion(res.data.question))
       .catch(err => console.error(err));
   };
@@ -29,7 +29,7 @@ const Interview = () => {
 
   const handleAnswerSubmit = async (transcript) => {
     try {
-      const res = await axios.post(`http://localhost:8000/api/sessions/${session.id}/answer?question=${encodeURIComponent(question)}&answer=${encodeURIComponent(transcript)}`);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/sessions/${session.id}/answer?question=${encodeURIComponent(question)}&answer=${encodeURIComponent(transcript)}`);
       navigate(`/report/${session.id}`, { state: { results: res.data, session: session } });
     } catch (err) {
       console.error(err);

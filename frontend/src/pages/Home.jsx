@@ -18,7 +18,7 @@ const Home = () => {
   const startInterview = async (type) => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:8000/api/sessions/', { interview_type: type });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/sessions/`, { interview_type: type });
       navigate('/interview', { state: { session: res.data } });
     } catch (err) {
       console.error(err);
