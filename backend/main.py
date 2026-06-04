@@ -15,8 +15,8 @@ app = FastAPI(
 FRONTEND_ORIGINS = [
     "http://localhost:5173",                    # local dev
     "http://localhost:3000",                    # local dev alt port
-    "https://ai-interview-coach.vercel.app",    # ← your Vercel URL (update if different)
-    # add more origins here if needed
+    "https://ai-interview-coach.vercel.app",    # fallback URL
+    "https://ai-interview-coach-delta-eosin.vercel.app", # exact Vercel URL
 ]
 
 app.add_middleware(
